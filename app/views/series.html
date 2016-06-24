@@ -25,7 +25,10 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <a href="#" class="btn btn-warning btn-block" role="button"><span class="glyphicon glyphicon-eye-open"></span></span>&nbsp;I’ve seen this</a>
+                        <a href="#" class="btn btn-warning btn-block" role="button">
+                            <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                            <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                        </a>
                     </div>
                 </div>
             </div>
