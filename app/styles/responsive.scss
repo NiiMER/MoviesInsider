@@ -11,8 +11,10 @@
   .header {
     margin-bottom: rem-calc(30);
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+  body {
+    > .container,
+    > .container-fluid{
+      padding-top: rem-calc(85);
+    }
   }
 }

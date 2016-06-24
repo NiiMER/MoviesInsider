@@ -41,6 +41,10 @@ body {
   }
 }
 
+.item-card{
+  margin-bottom: rem-calc(25);
+}
+
 .thumbnail {
   img.poster {
     width: 100%;
@@ -48,10 +52,13 @@ body {
 }
 
 .genre-box {
-  margin: rem-calc(0 0 20);
+  margin: rem-calc(0 0 25);
+  overflow-x: hidden;
   span.label {
-    margin: rem-calc(2 4);
+    display: inline-block;
+    margin: rem-calc(2 5 2 0);
   }
+
 }
 
 .stats-box {

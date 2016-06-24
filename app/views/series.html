@@ -1,26 +1,33 @@
 <div class="row">
-    <div class="col-sm-1 col-md-4" data-ng-repeat="ser in series">
+    <div class="col-xs-12 col-sm-6 col-md-4 item-card" data-ng-repeat="ser in series">
         <div data-movie-id-trakt="{{ser.show.ids.trakt}}" data-movie-id-imdb="{{ser.show.ids.imdb}}" data-movie-slug="{{ser.show.ids.slug}}">
             <a href="javascript:void(0);" class="thumbnail">
-            <img class="poster" src="images/yeoman.png" ng-src="{{ser.show.images.poster.thumb}}">
+                <img class="poster" src="images/yeoman.png" ng-src="{{ser.show.images.poster.thumb}}">
             </a>
             <div class="caption">
-                <h2>{{ser.show.title}}</h2>
+                <h3>{{ser.show.title}}</h3>
                 <div class="genre-box">
-                    <label>Genre</label>
-                    <h4>
-                        <span class="label label-info" data-ng-repeat="gen in ser.show.genres">{{gen}}</span>
-                    </h4>
+                    <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in ser.show.genres">{{gen}}</span></label>
                 </div>
-                <div class="btn-group btn-group-lg stats-box" role="group" aria-label="Watching VS Playing">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching this&nbsp;<span class="badge">{{ser.watcher_count}}</span>
-                    </button>
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-play"></span>&nbsp;Playing this&nbsp;<span class="badge">{{ser.play_count}}</span>
-                    </button>
+                <div class="row stats-box">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <button class="btn btn-default btn-block" type="button">
+                                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching&nbsp;<span class="badge">{{ser.watcher_count}}</span>
+                            </button>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-6">
+                            <button class="btn btn-default btn-block" type="button">
+                                <span class="glyphicon glyphicon-play"></span>&nbsp;Playing&nbsp;<span class="badge">{{ser.play_count}}</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="#" class="btn btn-warning btn-block" role="button"><span class="glyphicon glyphicon-eye-open"></span></span>&nbsp;I’ve seen this</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
