@@ -1,0 +1,11 @@
+!/dist
+!/dist/*
+!/dist/bower_components
+!/dist/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.eot
+!/dist/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.svg
+!/dist/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.ttf
+!/dist/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.woff
+!/dist/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*.woff2
+!/.tmp
+!/.sass-cache
+!/bower_components

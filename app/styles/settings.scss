@@ -1,0 +1,37 @@
+@import 'https://fonts.googleapis.com/css?family=Oswald';
+
+$grid: 12;
+$global-font-family: 'Oswald', sans-serif;
+$column-gutter: 30;
+$h-font-size: (44, 42, 40, 36, 33, 30);
+$global-font-size: 100%;
+
+// Colors palette
+$white: #fff;
+$elegant-black: #333;
+$dark-elegant-black: #222;
+$light-elegant-black: #444;
+$gray: #e4e4e4;
+$dark-gray: #afb1b4;
+$green: #4b96a2;
+$dark-green: #3f838e;
+$light-green: #00d089;
+$black: #4c505d;
+$dark-blue: #69728c;
+$light-blue: #4676ff;
+$light-red: #ff1818;
+
+$global-radius: 7;
+$global-border: 3px solid $dark-gray;
+
+// Body custom settings
+$body-bg: $elegant-black;
+$text-color: $white;
+$font-family-base: $global-font-family;
+
+$border-radius-base: 2px;
+
+// List group colors
+$list-group-bg: transparent;
+$list-group-border: $dark-elegant-black;
+$list-group-hover-bg: $light-elegant-black;
