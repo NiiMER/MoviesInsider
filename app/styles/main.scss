@@ -18,8 +18,8 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: rem-calc(15);
+  padding-right: rem-calc(15);
 }
 
 .header {
@@ -41,27 +41,21 @@ body {
   }
 }
 
-.thumbnail{
-  img.poster{
+.thumbnail {
+  img.poster {
     width: 100%;
   }
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+.genre-box {
+  margin: rem-calc(0 0 20);
+  span.label {
+    margin: rem-calc(2 4);
   }
 }
+
+.stats-box {
+  margin: rem-calc(0 0 10);
+}
+
+@import "./responsive.scss";
