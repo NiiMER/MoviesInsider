@@ -11,11 +11,13 @@ angular.module('moviesInsiderApp')
     return {
         templateUrl: 'views/directives/dirgenreslist.html',
         restrict: 'E',
-        controller: function($scope, fetchingService){
+        controller: function($scope, $rootScope, fetchingService){
             $scope.movieGenres = [];
             fetchingService.getGenres().then(function(data){
                 $scope.movieGenres = data;
             });
+
+            $rootScope.currentType = 'movies';
         }
     };
  });

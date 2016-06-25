@@ -45,6 +45,13 @@ body {
   margin-bottom: rem-calc(25);
 }
 
+.movie-title {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .thumbnail {
   img.poster {
     width: 100%;

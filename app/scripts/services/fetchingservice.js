@@ -24,7 +24,7 @@ angular.module('moviesInsiderApp')
             page: 1,
             limit: 29
         };
-        this.period = "/monthly";
+        this.period = "monthly";
     };
 
     FetchingService.prototype = function(){
@@ -59,7 +59,7 @@ angular.module('moviesInsiderApp')
 
             $http({
                 method: 'GET',
-                url: this.apiPath + '/movies/watched' + this.period,
+                url: this.apiPath + '/movies/watched/' + this.period,
                 headers: this.headersObject,
                 params: this.apiParams,
                 paramSerializer: '$httpParamSerializerJQLike'
@@ -83,7 +83,7 @@ angular.module('moviesInsiderApp')
 
             $http({
                 method: 'GET',
-                url: this.apiPath + '/shows/watched' + this.period,
+                url: this.apiPath + '/shows/watched/' + this.period,
                 headers: this.headersObject,
                 params: this.apiParams,
                 paramSerializer: '$httpParamSerializerJQLike'
@@ -95,11 +95,47 @@ angular.module('moviesInsiderApp')
             return deffered.promise;
         };
 
+        var fetchByGenres = function(showType, genreSlug){
+            if(showType !== undefined && genreSlug !== undefined){
+                var deffered = $q.defer();
+                var apiParams = this.apiParams;
+
+
+                Object.defineProperty(apiParams, 'limit', {
+                  enumerable: true,
+                  configurable: false,
+                  writable: true,
+                  value: 50
+                });
+
+                Object.defineProperty(apiParams, 'extended', {
+                  enumerable: true,
+                  configurable: false,
+                  writable: true,
+                  value: 'full,images'
+                });
+
+                $http({
+                    method: 'GET',
+                    url: this.apiPath + '/'+ showType + '/watched/' + this.period,
+                    headers: this.headersObject,
+                    params: apiParams,
+                    paramSerializer: '$httpParamSerializerJQLike'
+                }).then(function successCallback(response){
+                    deffered.resolve(response.data);
+                }, function errorCallback(response){
+                    console.log(response);
+                });
+                return deffered.promise;
+            }
+        };
+
 
         return {
-            getGenres: fetchGenres,
-            getMovies: fetchMovies,
-            getSeries: fetchSeries
+            getGenres:   fetchGenres,
+            getMovies:   fetchMovies,
+            getSeries:   fetchSeries,
+            getByGenres: fetchByGenres
         };
 
     }();

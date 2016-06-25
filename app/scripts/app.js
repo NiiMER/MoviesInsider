@@ -31,6 +31,11 @@ angular
         controller: 'SeriesCtrl',
         controllerAs: 'series'
       })
+      .when('/search/:type/genres/:genre', {
+        templateUrl: 'views/search.html',
+        controller: 'SearchCtrl',
+        controllerAs: 'search'
+      })
       .otherwise({
         redirectTo: '/movies'
       });
