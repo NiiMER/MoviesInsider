@@ -3,16 +3,15 @@
 /**
  * @ngdoc function
  * @name moviesInsiderApp.controller:MoviesCtrl
- * @description
+ * @description Controller for the movies page to show the most whatched movies
  * # MoviesCtrl
  * Controller of the moviesInsiderApp
  */
 angular.module('moviesInsiderApp')
-  .controller('MoviesCtrl', function ($scope, $rootScope, $http, fetchingService, localStorageService) {
+  .controller('MoviesCtrl', function ($scope, $rootScope, fetchingService, localStorageService) {
     $rootScope.currentType = 'movies';
     $scope.movies = [];
     $scope.lsKeys = localStorageService.keys();
-
 
     fetchingService.getMovies().then(function(data){
         $scope.movies = data;

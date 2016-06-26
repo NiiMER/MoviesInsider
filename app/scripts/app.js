@@ -3,7 +3,7 @@
 /**
  * @ngdoc overview
  * @name moviesInsiderApp
- * @description
+ * @description: here are the app configurations routers and main app dependencies
  * # moviesInsiderApp
  *
  * Main module of the application.
@@ -40,6 +40,8 @@ angular
       .otherwise({
         redirectTo: '/movies'
       });
+
+      // Configure the local storage module
       localStorageServiceProvider
         .setPrefix('moviesInsiderApp')
         .setStorageType('localStorage')

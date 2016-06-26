@@ -3,7 +3,7 @@
 /**
  * @ngdoc directive
  * @name moviesInsiderApp.directive:dirGenresList
- * @description
+ * @description directive to render the side genres menu
  * # dirGenresList
  */
 angular.module('moviesInsiderApp')
