@@ -1,69 +1,91 @@
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 item-card" data-ng-repeat="m in movies" data-ng-if="(isGenreType(m.movie.genres) && m.movie!==undefined)">
-        <div data-movie-id-trakt="{{m.movie.ids.trakt}}" data-movie-id-imdb="{{m.movie.ids.imdb}}" data-movie-slug="{{m.movie.ids.slug}}">
-            <a href="javascript:void(0);" class="thumbnail">
-                <img src="images/yeoman.png" ng-src="{{m.movie.images.poster.thumb}}" class="poster">
-            </a>
-            <div class="caption">
-                <h3 class="movie-title">{{m.movie.title}}</h3>
-                <div class="genre-box">
-                    <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in m.movie.genres">{{gen}}</span></label>
-                </div>
-                <div class="row stats-box">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-6">
-                            <button class="btn btn-default btn-block" type="button">
-                                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching&nbsp;<span class="badge">{{ser.watcher_count}}</span>
-                            </button>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-6">
-                            <button class="btn btn-default btn-block" type="button">
-                                <span class="glyphicon glyphicon-play"></span>&nbsp;Playing&nbsp;<span class="badge">{{ser.play_count}}</span>
-                            </button>
+    <div class="col-xs-12 col-sm-6 col-md-12 item-card" data-ng-repeat="m in movies" data-ng-if="(isGenreType(m.movie.genres) && m.movie!==undefined)">
+        <div class="row" data-movie-id-trakt="{{m.movie.ids.trakt}}" data-movie-id-imdb="{{m.movie.ids.imdb}}" data-movie-slug="{{m.movie.ids.slug}}">
+            <div class="col-xs-12 col-md-4">
+                <a href="javascript:void(0);" class="thumbnail">
+                    <img src="images/yeoman.png" ng-src="{{m.movie.images.poster.medium}}" class="poster">
+                </a>
+                <a href="#" class="btn btn-warning btn-block hidden-xs hidden-sm visible-md visible-lg" role="button">
+                    <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                    <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="caption">
+                    <h3 class="movie-title">{{m.movie.title}}</h3>
+                    <h5 class="rating">Rating: {{getRating(m.movie.rating)}}</h5>
+                    <h5 class="rating">Year: {{m.movie.year}}</h5>
+                    <div class="genre-box visible-md visible-lg hidden-xs hidden-sm">
+                        <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in m.movie.genres">{{gen}}</span></label>
+                    </div>
+                    <p class="visible-md visible-lg hidden-xs hidden-sm">{{m.movie.overview}}</p>
+                    <div class="row stats-box">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <button class="btn btn-default btn-block" type="button">
+                                    <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching&nbsp;<span class="badge">{{m.watcher_count}}</span>
+                                </button>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <button class="btn btn-default btn-block" type="button">
+                                    <span class="glyphicon glyphicon-play"></span>&nbsp;Playing&nbsp;<span class="badge">{{m.play_count}}</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#" class="btn btn-warning btn-block" role="button">
-                            <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
-                            <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
-                        </a>
+                    <div class="row visible-xs visible-sm hidden-md hidden-lg">
+                        <div class="col-sm-12">
+                            <a href="#" class="btn btn-warning btn-block" role="button">
+                                <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                                <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 item-card" data-ng-repeat="ser in movies" data-ng-if="(isGenreType(ser.show.genres) && ser.show!==undefined)">
-        <div data-movie-id-trakt="{{ser.show.ids.trakt}}" data-movie-id-imdb="{{ser.show.ids.imdb}}" data-movie-slug="{{ser.show.ids.slug}}">
-            <a href="javascript:void(0);" class="thumbnail">
-                <img src="images/yeoman.png" data-ng-src="{{ser.show.images.poster.thumb}}" class="poster">
-            </a>
-            <div class="caption">
-                <h3 class="movie-title">{{ser.show.title}}</h3>
-                <div class="genre-box visible-xs visible-sm hidden-md hidden-lg">
-                    <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in ser.show.genres">{{gen}}</span></label>
-                </div>
-                <div class="row stats-box">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 col-lg-6">
-                            <button class="btn btn-default btn-block" type="button">
-                                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching&nbsp;<span class="badge">{{ser.watcher_count}}</span>
-                            </button>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-6">
-                            <button class="btn btn-default btn-block" type="button">
-                                <span class="glyphicon glyphicon-play"></span>&nbsp;Playing&nbsp;<span class="badge">{{ser.play_count}}</span>
-                            </button>
+        <div class="row" data-movie-id-trakt="{{ser.show.ids.trakt}}" data-movie-id-imdb="{{ser.show.ids.imdb}}" data-movie-slug="{{ser.show.ids.slug}}">
+            <div class="col-xs-12 col-md-4">
+                <a href="javascript:void(0);" class="thumbnail">
+                    <img src="images/yeoman.png" ng-src="{{ser.show.images.poster.medium}}" class="poster">
+                </a>
+                <a href="#" class="btn btn-warning btn-block hidden-xs hidden-sm visible-md visible-lg" role="button">
+                    <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                    <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                </a>
+            </div>
+            <div class="col-xs-12 col-md-8">
+                <div class="caption">
+                    <h3 class="movie-title">{{ser.show.title}}</h3>
+                    <h5 class="rating">Rating: {{getRating(ser.show.rating)}}</h5>
+                    <h5 class="rating">Year: {{ser.show.year}}</h5>
+                    <div class="genre-box visible-md visible-lg hidden-xs hidden-sm">
+                        <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in ser.show.genres">{{gen}}</span></label>
+                    </div>
+                    <p class="visible-md visible-lg hidden-xs hidden-sm">{{ser.show.overview}}</p>
+                    <div class="row stats-box">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <button class="btn btn-default btn-block" type="button">
+                                    <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Whatching&nbsp;<span class="badge">{{ser.watcher_count}}</span>
+                                </button>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                <button class="btn btn-default btn-block" type="button">
+                                    <span class="glyphicon glyphicon-play"></span>&nbsp;Playing&nbsp;<span class="badge">{{ser.play_count}}</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <a href="#" class="btn btn-warning btn-block" role="button">
-                            <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
-                            <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
-                        </a>
+                    <div class="row visible-xs visible-sm hidden-md hidden-lg">
+                        <div class="col-sm-12">
+                            <a href="#" class="btn btn-warning btn-block" role="button">
+                                <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                                <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

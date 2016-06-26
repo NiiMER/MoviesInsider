@@ -17,11 +17,17 @@
       padding-top: rem-calc(85);
     }
   }
+  .thumbnail {
+    margin-bottom: 0;
+  }
 }
 /* Responsive: Mobile devices minimum than the tablets */
 @media screen and (max-width: 767px) {
   body > .container,
   body > .container-fluid {
     padding-top: rem-calc(85);
+  }
+  .thumbnail {
+    margin-bottom: 0;
   }
 }

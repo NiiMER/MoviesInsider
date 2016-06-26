@@ -22,7 +22,7 @@ angular.module('moviesInsiderApp')
         };
         this.apiParams = {
             page: 1,
-            limit: 29
+            limit: 69
         };
         this.period = "monthly";
     };
@@ -105,7 +105,7 @@ angular.module('moviesInsiderApp')
                   enumerable: true,
                   configurable: false,
                   writable: true,
-                  value: 50
+                  value: 99
                 });
 
                 Object.defineProperty(apiParams, 'extended', {
