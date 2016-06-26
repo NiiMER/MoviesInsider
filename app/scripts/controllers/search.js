@@ -8,9 +8,10 @@
  * Controller of the moviesInsiderApp
  */
 angular.module('moviesInsiderApp')
-  .controller('SearchCtrl', function ($scope, $rootScope, $routeParams, fetchingService) {
+  .controller('SearchCtrl', function ($scope, $rootScope, $routeParams, fetchingService, localStorageService) {
     $scope.movies = [];
-    console.log($routeParams);
+    $scope.lsKeys = localStorageService.keys();
+
     fetchingService.getByGenres($routeParams.type, $routeParams.genre).then(function(data){
         $scope.movies = data;
     });
@@ -19,5 +20,17 @@ angular.module('moviesInsiderApp')
             return (genres.indexOf($routeParams.genre)> -1)? true: false;
         }
         return false;
+    };
+    $scope.getRating = function(ratingNumber){
+        return Math.round(parseFloat(ratingNumber) * 100) / 100;
+    };
+
+    $scope.toggleWatchedMovie = function(movieID){
+        localStorageService.set('whatched_movie_id'+movieID, movieID);
+        $scope.lsKeys.push('whatched_movie_id'+movieID);
+    };
+
+    $scope.isWhatchedMovie = function(movieID){
+        return ($scope.lsKeys.indexOf('whatched_movie_id'+movieID)>-1)?true: false;
     };
   });

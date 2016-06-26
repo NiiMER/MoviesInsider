@@ -17,9 +17,10 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, localStorageServiceProvider) {
     $routeProvider
       .when('/movies', {
         templateUrl: 'views/movies.html',
@@ -39,4 +40,8 @@ angular
       .otherwise({
         redirectTo: '/movies'
       });
+      localStorageServiceProvider
+        .setPrefix('moviesInsiderApp')
+        .setStorageType('localStorage')
+        .setNotify(true, true);
   });

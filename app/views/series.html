@@ -5,15 +5,15 @@
                 <a href="javascript:void(0);" class="thumbnail">
                     <img src="images/yeoman.png" ng-src="{{ser.show.images.poster.medium}}" class="poster">
                 </a>
-                <a href="#" class="btn btn-warning btn-block hidden-xs hidden-sm visible-md visible-lg" role="button">
-                    <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
-                    <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                <a href="javascript:void(0);" class="btn btn-warning btn-block hidden-xs hidden-sm visible-md visible-lg" role="button" data-ng-click="toggleWatchedMovie(ser.show.ids.trakt)">
+                    <span data-ng-hide="isWhatchedMovie(ser.show.ids.trakt)"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                    <span data-ng-show="isWhatchedMovie(ser.show.ids.trakt)"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
                 </a>
             </div>
             <div class="col-xs-12 col-md-8">
                 <div class="caption">
                     <h3 class="movie-title">{{ser.show.title}}</h3>
-                    <h5 class="rating">Rating: {{getRating(ser.show.rating)}}</h5>
+                    <h5 class="rating">Rating: {{getRating(ser.show.rating)}} / 10</h5>
                     <h5 class="rating">Year: {{ser.show.year}}</h5>
                     <div class="genre-box visible-md visible-lg hidden-xs hidden-sm">
                         <label>Genre:&nbsp;<span class="label label-info" data-ng-repeat="gen in ser.show.genres">{{gen}}</span></label>
@@ -35,9 +35,9 @@
                     </div>
                     <div class="row visible-xs visible-sm hidden-md hidden-lg">
                         <div class="col-sm-12">
-                            <a href="#" class="btn btn-warning btn-block" role="button">
-                                <span data-ng-if="true"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
-                                <span data-ng-if="false"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
+                            <a href="javascript:void(0);" class="btn btn-warning btn-block" role="button" data-ng-click="toggleWatchedMovie(ser.show.ids.trakt)">
+                                <span data-ng-hide="isWhatchedMovie(ser.show.ids.trakt)"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;I’ve seen this</span>
+                                <span data-ng-show="isWhatchedMovie(ser.show.ids.trakt)"><span class="glyphicon glyphicon-eye-close"></span>&nbsp;Watched</span>
                             </a>
                         </div>
                     </div>
